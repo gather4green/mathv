@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html lang="en-US">
 <title>Math Vihar</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <link rel="stylesheet" href="w3.css">
 <script src="appml.js"></script>
 <script src="questions.js"></script>
 
-<body onload="setup()">
+<body onload="setup()"> 	
 
 <div class="w3-panel w3-border w3-border-black">
 
   <div class="w3-display-container w3-green w3-border w3-border-red" style="height:200px;" id="zym">
 
-    <div class="w3-display-left w3-hide-small" onchange="gradeselect()">
+    <div class="w3-display-left" onchange="gradeselect()">
 	  <select class="w3-select" id="grade" onchange="">
 		<option value="" disabled selected>Choose the Grade</option>
 		<option value="1">Grade1</option>
@@ -21,14 +22,14 @@
 	</div>
 
 
-    <div class="w3-display-topmiddle w3-hide-small w3-orange" >
+    <div class="w3-display-topmiddle w3-orange" >
     	<h1 class="w3-opacity" id="questions"></h1>
 	</div>
     <div class="w3-display-middle"><input type=number id='ans' /></div>
-    <div class="w3-display-bottommiddle w3-hide-small" >
+    <div class="w3-display-bottommiddle" >
 		<h1 class="w3-opacity" id="timer"></h1>
 	</div>
-    <div class="w3-display-bottommiddle w3-hide-small">
+    <div class="w3-display-bottommiddle">
 		<button onclick="startZym(5)" id="start">Start</button>
 	</div>
     <div class="w3-display-bottomright">
