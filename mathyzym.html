@@ -8,7 +8,7 @@
 
 <body onload="setup()"> 	
 
-<div class="w3-panel w3-border w3-border-black">
+<div class="w3-panel w3-border w3-border-black" id="mathzym">
 
   <div class="w3-display-container w3-green w3-border w3-border-red" style="height:200px;" id="zym">
 
@@ -49,109 +49,8 @@
 
 //alert(records);
 
-function setup(){
-	document.getElementById("next").disabled = true;
-	document.getElementById("ans").disabled = true;
-	document.getElementById("start").disabled = true;
-	//alert(document.getElementById("ans").disabled);
-}
 
-function gradeselect(){
-	// initilaze records with respective grade questions
-	var v = document.getElementById("grade").value;
-	switch(v) {
-		case "1": //grade1
-			records = myObject.grade1;
-			break;
-		case "2": //grade 2
-			records = myObject.grade2;
-			break;
-		default:
-			alert("No grade found");
-	}
 
-	//alert(records[0].question);
-	startZym(2);
-}
-
-function startZym(noq){
-   
-	startTimer();
-    ac = 0;
-	var r = Math.floor(Math.random() * records.length);
-
-	jsquestion = records[r];
-
-	document.getElementById("questions").textContent = jsquestion.question;
-    
-    qa = jsquestion.answer;
-    document.getElementById("start").disabled=true;
-    document.getElementById("next").disabled = false;
-    document.getElementById("ans").disabled = false;
-    document.getElementById("ans").focus();
-	document.getElementById("questions").style.color = "blue";
-	document.getElementById("grade").disabled = "true";
-    q = 1;
-	
-}
-
-function next(noq){
-
-//alert(noq+" "+ q + " "+document.getElementById("ans").value+" amma "+qa);
-	if(q <= noq) {
-
-		if(document.getElementById("ans").value == qa) {
-			ac++;
-		} else {
-			document.getElementById("ans").value = "";
-			document.getElementById("ans").focus();
-			document.getElementById("questions").textContent = jsquestion.question+"   Re-Check the answer";
-			//w3.addStyle('#questions','background-color','red');
-			document.getElementById("questions").style.color = "red";
-			return;
-		}
-
-		if (noq == ac) {
-		//alert("Congrats....."+noq+ " " +ac)
-			document.getElementById("next").disabled = true;
-			document.getElementById("start").disabled = true;
-			document.getElementById("ans").value = "";
-			document.getElementById("ans").disabled = true;
-				 
-			document.getElementById("grade").value = "";
-			document.getElementById("grade").focus();
-			document.getElementById("grade").disabled = "false";
-
-			document.getElementById("questions").textContent = "Congrats";
-			
-			stopTimer();
-
-		} else if(noq == q){
-				//alert("Try again....."+noq+ " " +ac);
-			document.getElementById("next").disabled = true;
-			document.getElementById("start").disabled = false;
-			document.getElementById("ans").value = "";
-			document.getElementById("ans").disabled = true;
-			document.getElementById("questions").textContent = "Try Again";
-		  
-		} else {
-			var r = Math.floor(Math.random() * records.length);
-
-			jsquestion = records[r];
-
-			//alert(r+question.CustomerName);
-
-			document.getElementById("questions").textContent = jsquestion.question;
-
-			qa = jsquestion.answer;
-		
-			document.getElementById("ans").value = "";
-			document.getElementById("ans").focus();
-			document.getElementById("questions").style.color = "blue";
-			q++;
-		}
-	} 
-}
 
 var input = document.getElementById("ans");
 input.addEventListener("keypress", function(event) {
@@ -161,36 +60,6 @@ input.addEventListener("keypress", function(event) {
   }
 });
 
-let timeLeft = 60; // 60 seconds = 1 minute
-let timerInterval;
-
-function startTimer() {
-  const timerDisplay = document.getElementById("timer"); 
-
-  timerInterval = setInterval(() => {
-    timeLeft--;
-
-    const minutes = Math.floor(timeLeft / 60);
-    const seconds = timeLeft % 60;
-
-    timerDisplay.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
-
-    if (timeLeft === 0) {
-      clearInterval(timerInterval);
-      timerDisplay.textContent = "Time's up!";
-		document.getElementById("ans").disabled = true;
-		document.getElementById("questions").textContent = ac + " Questions answered in given time" 
-    }
-  }, 1000); // Update every 1 second
-}
-
-function stopTimer() {
-  clearInterval(timerInterval);
-  timeLeft = 60;
-  const timerDisplay = document.getElementById("timer"); 
-  timerDisplay.textContent = "";
-  //alert('stop timer');
-}
 
 </script>
 

@@ -5,13 +5,15 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <link rel="stylesheet" href="w3.css">
 <script src="w3.js"></script>
-<body>
+<script src="appml.js"></script>
+<script src="questions.js"></script>
+<body onload="setup()">
 
 <!-- Navigation (Stays on Top) -->
 <div class="w3-top w3-bar w3-black">
 <a href="#home" class="w3-bar-item w3-button">Home</a>
 <a href="#about" class="w3-bar-item w3-button">About</a>
-<a href="#members" class="w3-bar-item w3-button">Members</a>
+<a href="#mathzym" class="w3-bar-item w3-button">Math Zym</a>
 <a href="#contact" class="w3-bar-item w3-button">Contact</a>
 </div>
 
@@ -37,6 +39,42 @@ w3.slideshow(".slides", 1500);
 <h1 class="w3-center">What is Math Vihar</h1>
 <p>This is our band website. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
 </div>
+
+<div class="w3-panel w3-display-middle">
+  Enter the name to start Math Zym : <input type="text" id="sname"  />
+  <br><br>
+</div>
+
+<div class="w3-panel" id="mathzym">
+
+  <div class="w3-display-container w3-green w3-border w3-border-red" style="height:200px;" id="mathzym">
+
+    <div class="w3-display-left" onchange="gradeselect()">
+	  <select class="w3-select" id="grade" onchange="">
+		<option value="" disabled selected>Choose the Grade</option>
+		<option value="1">Grade1</option>
+		<option value="2">Grade 2</option>
+		<option value="3">Grade 3</option>
+	  </select>
+	</div>
+
+
+    <div class="w3-display-topmiddle w3-orange" >
+    	<h1 class="w3-opacity" id="questions"></h1>
+	</div>
+    <div class="w3-display-middle"><input type=number id='ans' /></div>
+    <div class="w3-display-bottommiddle" >
+		<h1 class="w3-opacity" id="timer"></h1>
+	</div>
+    <div class="w3-display-bottommiddle">
+		<button onclick="startZym(5)" id="start">Start</button>
+	</div>
+    <div class="w3-display-bottomright">
+		<button onclick="next(3)" id="next">.</button>
+	</div>
+  </div>
+</div>
+
 
 <!-- Members -->
 <div id="members" class="w3-container w3-padding-32">
@@ -86,5 +124,27 @@ Email: mail@mail.com<br>
 <!-- End Content -->
 </div>
 
+<script>
+
+
+//alert(records);
+
+  function setup(){
+    document.getElementById("next").disabled = true;
+    document.getElementById("ans").disabled = true;
+    document.getElementById("start").disabled = true;
+    alert(document.getElementById("ans").disabled);
+  }
+
+  var input = document.getElementById("ans");
+  input.addEventListener("keypress", function(event) {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      document.getElementById("next").click();
+    }
+  });
+
+
+</script>
 </body>
 </html>
