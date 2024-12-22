@@ -40,9 +40,8 @@ w3.slideshow(".slides", 1500);
 <p>This is our band website. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
 </div>
 
-<div class="w3-panel w3-display-middle">
-  Enter the name to start Math Zym : <input type="text" id="sname"  />
-  <br><br>
+<div class="w3-panel w3-display-container">
+    Enter the name to start Math Zym : <input type="text" id="sname"  />
 </div>
 
 <div class="w3-panel" id="mathzym">
@@ -58,8 +57,7 @@ w3.slideshow(".slides", 1500);
 	  </select>
 	</div>
 
-
-    <div class="w3-display-topmiddle w3-orange" >
+  <div class="w3-display-topmiddle w3-orange" >
     	<h1 class="w3-opacity" id="questions"></h1>
 	</div>
     <div class="w3-display-middle"><input type=number id='ans' /></div>
@@ -116,10 +114,6 @@ Email: mail@mail.com<br>
 <button class="w3-button w3-black" type="submit">SEND</button>
 </form>
 
-<br>
-<img src="map.jpg" class="w3-image" style="width:100%">
-<p class="w3-center w3-padding">Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank">w3.css</a></p>
-</div>
 
 <!-- End Content -->
 </div>
@@ -133,6 +127,9 @@ Email: mail@mail.com<br>
     document.getElementById("next").disabled = true;
     document.getElementById("ans").disabled = true;
     document.getElementById("start").disabled = true;
+    document.getElementById("grade").disabled = true;
+    document.getElementById("sname").focus();
+
     //alert(document.getElementById("ans").disabled);
   }
 
@@ -141,6 +138,16 @@ Email: mail@mail.com<br>
     if (event.key === "Enter") {
       event.preventDefault();
       document.getElementById("next").click();
+    }
+  });
+
+  var input1 = document.getElementById("sname");
+  input1.addEventListener("keypress", function(event) {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      //document.getElementById("next").click();
+      document.getElementById("grade").disabled = false;
+      document.getElementById("grade").focus();
     }
   });
 
