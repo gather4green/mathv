@@ -34,8 +34,6 @@ var jsquestion;
 var sa = 0;
 var qa = 0;
 
-
-
 function gradeselect(){
 	// initilaze records with respective grade questions
 	var v = document.getElementById("grade").value;
@@ -165,3 +163,6 @@ function stopTimer() {
   //timerDisplay.textContent = "";
   //alert('stop timer');
 }
+
+const about = "Math Vihar online and offline turorial...";
+const why = "Math vihar provides platform for students to meet their goals by fun way of learning math...";
